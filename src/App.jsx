@@ -9,13 +9,14 @@ class App extends React.Component {
     this.state = {
       buttonClicked: "",
       assignments: [] /*Below this line, add the students state variable*/,
+      students: [],
       grades: {}
     };
 
     this.handleButtonClicked = this.handleButtonClicked.bind(this);
     this.addAssignment = this.addAssignment.bind(this);
     /*Uncomment the line below to bind the method*/
-    /*this.addStudent = this.addStudent.bind(this);*/
+    this.addStudent = this.addStudent.bind(this);
     this.addGrade = this.addGrade.bind(this);
   }
 
@@ -33,6 +34,11 @@ class App extends React.Component {
   }
 
   /*Write an addStudent method here*/
+  addStudent(studentName) {
+    this.setState({
+      students: this.state.students.concat(studentName)
+    });
+  }
 
   addGrade(assignment, student, score) {
     let grades = this.state.grades;
@@ -89,7 +95,8 @@ class App extends React.Component {
       <div>
         <div className="Box Box--spacious f4">
           <div className="Box-header">
-            {/* Replace this line with the proper header code*/}
+            <h3 className="Box-title d-flex flex-justify-center">GradeBook</h3>
+
           </div>
         </div>
         <nav className="UnderlineNav d-flex flex-justify-center">
